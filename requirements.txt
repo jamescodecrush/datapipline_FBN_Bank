@@ -1,0 +1,5 @@
+mysql-client
+faker
+pandas
+boto3
+pyarrow

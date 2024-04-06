@@ -1,0 +1,30 @@
+version: '3.1'
+
+
+services:
+
+  db:
+    image: mysql
+  
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+  
+  aws:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+   
+    env_file:
+      - .env
+    environment:
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRETE_ACCESS_KEY}
+     
